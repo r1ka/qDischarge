@@ -50,7 +50,7 @@ void MainWindow::readyRead()
     if (value > highestVolt)
             highestVolt = value;
 
-    mah += (lastCurrent * 0.2) / 3.6;
+    mah += (lastCurrent * 0.1) / 3.6;
 
     seriesVolts->append(mah, lastVoltage);
     seriesCurrent->append(mah, lastCurrent);
@@ -80,7 +80,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->cbPort->addItem(QSerialPortInfo::availablePorts().at(i).portName());
 
     timer = new QTimer(this);
-    timer->setInterval(200);
+    timer->setInterval(100);
     timer->setSingleShot(true);
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
