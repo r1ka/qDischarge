@@ -6,10 +6,14 @@ void MainWindow::update()
     //qDebug() << "On timer";
     port.write(":MEAS:CURR?\r\n");
     port.write(":MEAS:VOLT?\r\n");
+
+    time.start();
 }
 
 void MainWindow::readyRead()
 {
+    int addms = time.elapsed();
+
     double value = 0;
     bool isCurrent = false;
 
@@ -50,7 +54,7 @@ void MainWindow::readyRead()
     if (value > highestVolt)
             highestVolt = value;
 
-    ah += ((lastCurrent * 1) / 60 / 60) * 1000;
+    ah += ((lastCurrent * (1 + addms / 1000)) / 60 / 60) * 1000;
 
     seriesVolts->append(ah, lastVoltage);
     seriesCurrent->append(ah, lastCurrent);

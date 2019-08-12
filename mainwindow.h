@@ -6,6 +6,7 @@
 #include <QSerialPortInfo>
 #include <QtCharts>
 #include <QTimer>
+#include <QTime>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,8 @@ private slots:
     void on_btnRequest_clicked();
 
 private:
+    QTime time;
+
     double ah;
     double highestVolt;
     double highestCurrent;
