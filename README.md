@@ -1,4 +1,4 @@
-# qDischarger
+# qDischarge
 Battery discharging and test utility for KORAD KEL103
 
 Binary for windows - https://github.com/r1ka/qDischarge/blob/master/qDischarge.zip
