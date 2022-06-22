@@ -1,3 +1,5 @@
+#include <QThread>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -176,7 +178,7 @@ void MainWindow::on_btnClose_clicked()
 {
     on_btnStop_clicked();
 
-    Sleep(1000);
+    QThread::msleep(1000);
 
     port.close();
 
